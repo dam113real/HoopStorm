@@ -479,7 +479,7 @@ export default {
     name: 'Zapatillas Air Max Dunk',
     category: 'Calzado',
     description: 'Edición especial para cancha y calle. Comodidad máxima y diseño icónico.',
-    image: '/basket/ropa/9/1.png',
+    image: '/basket/ropa/23/1.webp',
     price: 120,
     rating: 5
   },
@@ -497,7 +497,7 @@ export default {
     name: 'Balón Oficial FIBA',
     category: 'Accesorios',
     description: 'Balón de alta calidad con grip profesional y durabilidad probada.',
-    image: '/basket/ropa/9/1.png',
+    image: '/basket/ropa/34/1.png',
     price: 60,
     rating: 5
   }
@@ -532,50 +532,44 @@ export default {
     const latestNews = ref([
       {
         id: 1,
-        title: 'Las nuevas Nike Air Zoom revolucionan el mercado',
-        excerpt: 'Analizamos en profundidad la tecnología detrás de las últimas zapatillas de baloncesto de Nike y cómo mejoran el rendimiento.',
-        date: '15 mayo, 2025',
-        category: 'Producto',
-        image: '/basket/noticias/1.jpg'
+        title: 'Kevin Durant decide cuál es su siguiente destino preferido: no es Barcelona',
+        excerpt: 'Kevin Durant ya tiene claro cuál es su destino preferido este verano, en el que será traspasado con toda seguridad por los Phoenix Suns. Todavía lejana la posibilidad de jugar la Euroliga -el Barça es una de las opciones que maneja-, la estrella de 36 años se decantaría por los San Antonio Spurs de Victor Wembanyama.',
+        date: '15 febrero, 2025',
+        image: '/basket/noticias/suns.jpg'
       },
       {
         id: 2,
-        title: 'Entrevista exclusiva con Carlos Martínez',
-        excerpt: 'Conversamos con nuestra estrella sobre su preparación para la próxima temporada y sus rutinas de entrenamiento.',
+        title: 'España gana a Portugal para seguir adelante con su preparación',
+        excerpt: 'La selección española femenina de baloncesto venció este martes a Portugal (59-68) en un partido de preparación para el Eurobasket 2025 disputado en la localidad lusa de Viana do Castelo en el que, tras un gran arranque, logró superar sus dudas del segundo y tercer cuarto para terminar imponiendo su mayor calidad en el tramo final del choque.',
         date: '10 mayo, 2025',
-        category: 'Atletas',
-          image: '/basket/noticias/1.jpg'
+          image: '/basket/noticias/chicas.webp'
       },
       {
         id: 3,
-        title: 'Guía completa: Cómo elegir tu primer balón',
-        excerpt: 'Te explicamos todos los factores a considerar para elegir el balón perfecto según tu estilo de juego y superficie.',
-        date: '5 mayo, 2025',
-        category: 'Guías',
-        image: '/basket/noticias/1.jpg'
+        title: 'La NBA anuncia que Mavericks y Pistons jugarán en México el 1 de noviembre',
+        excerpt: 'La NBA anunció este martes que Dallas Mavericks y Detroit Pistons jugarán el NBA Mexico City Game 2025 en la Arena Ciudad de México el 1 de noviembre.',
+        date: '5 abril, 2025',
+        image: '/basket/noticias/1.jpeg'
       },
       {
         id: 4,
-        title: 'Las mejores canchas urbanas de España',
-        excerpt: 'Recorremos el país para mostrarte los mejores lugares para jugar baloncesto al aire libre.',
-        date: '1 mayo, 2025',
-        category: 'Lifestyle',
-        image: '/basket/noticias/1.jpg'
+        title: 'Los Lakers intentan reunir a Doncic con un excompañero para ganar músculo',
+        excerpt: 'Tras su decepcionante eliminación en la primera ronda de los playoffs ante los Wolves (1-4), los Lakers trabajan ya en la planificación de la próxima temporada, y tienen muy claro que uno de sus puntos débiles esta campaña ha sido el juego interior, sin un pívot de referencia para complementar a su potente perímetro con LeBron James, Luka Doncic y Austin Reaves.',
+        date: '1 enero, 2025',
+        image: '/basket/noticias/doncic.webp'
       },
       {
         id: 5,
-        title: 'Preparación física: Ejercicios esenciales',
-        excerpt: 'Nuestros entrenadores comparten sus rutinas favoritas para mejorar tu rendimiento en la cancha.',
+        title: '🏀 Último segundo, gloria total: el punto que cambió el destino del partido',
+        excerpt: 'En una noche de tensión absoluta, con el marcador empatado y el cronómetro marcando los últimos segundos, todo se redujo a una sola jugada. La afición contenía la respiración mientras el balón viajaba en el aire.',
         date: '28 abril, 2025',
-        category: 'Entrenamiento',
-         image: '/basket/noticias/1.jpg'
+         image: '/basket/noticias/2.jpg'
       },
       {
         id: 6,
-        title: 'Preparación física: Ejercicios esenciales',
-        excerpt: 'Nuestros entrenadores comparten sus rutinas favoritas para mejorar tu rendimiento en la cancha.',
-        date: '28 abril, 2025',
-        category: 'Entrenamiento',
+        title: 'Victoria agónica de los Raptors en tiempo extra ante los Warriors',
+        excerpt: 'En un partido lleno de emoción y dramatismo, los Toronto Raptors se impusieron 112-109 a los Golden State Warriors en tiempo extra. Con una actuación estelar de Scottie Barnes, quien anotó 28 puntos y capturó 10 rebotes, los Raptors lograron remontar en los últimos minutos. Stephen Curry intentó forzar la remontada con 6 triples, pero una defensa férrea en los segundos finales selló la victoria para Toronto.',
+        date: '6 junio, 2025',
          image: '/basket/noticias/1.jpg'
       }
     ]);
