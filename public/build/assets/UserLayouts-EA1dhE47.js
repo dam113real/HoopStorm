@@ -1,0 +1,1 @@
+import{i as s}from"./index-yIGpcDrH.js";import t from"./Header-BqeWrsuK.js";import{l as a,d as r,o as l,a as n,e as m,m as i}from"./app-Cg5WBZFx.js";const f={__name:"UserLayouts",setup(d){return a(()=>{s()}),(o,e)=>(l(),r("div",null,[n(t),e[0]||(e[0]=m("div",{class:"h-16 md:h-20"},null,-1)),i(o.$slots,"default")]))}};export{f as default};

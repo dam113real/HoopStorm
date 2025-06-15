@@ -40,7 +40,7 @@ onMounted(() => {
 
 <style>
 .bg-wrapper {
-  background-image: url('basket/home/fondo.jpg');
+  background-image: url('basket/home/1.jpg');
   background-size: cover;
   background-position: center;
   filter: contrast(1.1) brightness(0.9);

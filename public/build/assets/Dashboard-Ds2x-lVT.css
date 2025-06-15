@@ -1,0 +1,1 @@
+@keyframes fadeIn{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.animate-fade-in{animation:fadeIn .6s ease-out both}.staggered-fade-enter-active{transition:all .5s ease}.staggered-fade-leave-active{transition:all .3s ease}.staggered-fade-enter-from{opacity:0;transform:translateY(30px)}.staggered-fade-enter-to{opacity:1;transform:translateY(0)}

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NoticiaResource;
 
-use App\Models\news;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 

@@ -155,23 +155,15 @@
         </div>
       </div>
     </div>
-    
-    <!-- Modernized floating back button -->
-    <div class="fixed bottom-10 right-10 z-50">
-      <Link 
-        :href="route('news.index')"
-        class="flex items-center gap-2 p-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-lg rounded-full hover:shadow-xl transform hover:scale-110 transition-all duration-300 group overflow-hidden">
-        <!-- Button background effect -->
-        <div class="absolute inset-0 bg-gradient-to-r from-teal-400 to-lime-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        
-        <!-- Button content -->
-        <svg class="w-6 h-6 relative z-10 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        <span class="absolute right-0 transform translate-x-10 group-hover:translate-x-0 transition-transform duration-300 pr-4 font-medium relative z-10">Back</span>
-      </Link>
-    </div>
-    
+    <div class="flex justify-center my-10">
+        <Link
+          :href="route('news.index')"
+          class="transition transform scale-95 hover:scale-105 duration-300 text-white bg-gradient-to-r from-teal-400 to-lime-400 hover:from-lime-400 hover:to-teal-400 font-semibold rounded-lg px-8 py-3 shadow-lg"
+        >
+          ⬅️ Volver a Noticias
+        </Link>
+      </div>
+   
     <!-- Modern reading progress bar -->
     <div class="fixed top-0 left-0 right-0 h-1 z-50">
       <div class="h-full bg-gradient-to-r from-teal-400 via-lime-400 to-teal-400 backdrop-blur-sm" :style="{ width: `${readingProgress}%` }"></div>

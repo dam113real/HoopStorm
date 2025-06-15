@@ -206,281 +206,339 @@ const deleteAtlethe = (atlethe, index) => {
 }
 </script>
 <template>
-    <section class="  p-3 sm:p-5">
-        <!-- dialog for adding product or editing product -->
-        <el-dialog v-model="dialogVisible" :title="editMode ? 'Edit atlethe' : 'Add Atlethe'" width="30%"
-                   :before-close="handleClose">
-            <!-- form start -->
-
-            <form @submit.prevent="editMode ? updateAtlethe() : AddAtlethe()">
-                <div class="relative z-0 w-full mb-6 group">
-                    <input v-model="title" type="text" name="floating_title" id="floating_title"
-                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                           placeholder=" " required />
-                    <label for="floating_title"
-                           class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
-                </div>
-
-
-
-              <!-- <div>
-                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
-                        Category</label>
-                    <select id="countries" v-model="category_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}
-                        </option>
-
-                    </select>
-                </div>-->
-
-
-             <!--   <div>
-                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
-                        Brand</label>
-                    <select id="countries" v-model="brand_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
-
-                    </select>
-                </div>-->
-
-
-                <div class="grid  md:gap-6">
-                    <div class="relative z-0 w-full mb-6 group">
-
-                        <label for="message"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <textarea id="message" rows="4" v-model="description"
-                                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Leave a comment..."></textarea>
-
+    <section class="p-3 sm:p-5 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+        <!-- Modern Modal for adding/editing athlete -->
+        <el-dialog 
+            v-model="dialogVisible" 
+            :title="editMode ? 'Editar Atleta' : 'Nuevo Atleta'" 
+            width="600px"
+            :before-close="handleClose"
+            class="modern-dialog"
+        >
+            <template #header>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
                     </div>
-
-                </div>
-
-                <div class="grid  md:gap-6">
-                    <div class="relative z-0 w-full mb-6 group">
-
-                        <label for="extrainfo"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Extra Info</label>
-                        <textarea id="extrainfo" rows="4" v-model="extrainfo"
-                                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Leave a comment..."></textarea>
-
-                    </div>
-
-                </div>
-                <!-- multiple images upload -->
-                <div class="grid  md:gap-6">
-                    <div class="relative z-0 w-full mb-6 group">
-                        <el-upload v-model:file-list="atletheImages" list-type="picture-card" multiple
-                                   :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
-                            <el-icon>
-                                <Plus />
-                            </el-icon>
-                        </el-upload>
-
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">{{ editMode ? 'Editar Atleta' : 'Nuevo Atleta' }}</h3>
+                        <p class="text-sm text-gray-500">{{ editMode ? 'Actualiza la información del atleta' : 'Completa los datos del nuevo atleta' }}</p>
                     </div>
                 </div>
-                <!-- end -->
+            </template>
 
-                <!-- list of images for selected product -->
-                <div class="flex flex-nowrap mb-8 ">
-                    <div v-for="(aimage, index) in atlethe_images" :key="aimage.id" class="relative w-32 h-32 ">
-                        <img class="w-24 h-20 rounded" :src="`/${aimage.image}`" alt="">
-                        <span
-                            class="absolute top-0 right-8 transform -translate-y-1/2 w-3.5 h-3.5 bg-red-400 border-2 border-white dark:border-gray-800 rounded-full">
-                            <span @click="deleteImage(aimage, index)"
-                                  class="text-white text-xs font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">x</span>
-                        </span>
+            <div class="bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-2xl p-6">
+                <form @submit.prevent="editMode ? updateAtlethe() : AddAtlethe()" class="space-y-6">
+                    <!-- Title Field with Modern Design -->
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                                <span>Nombre del Atleta</span>
+                            </span>
+                        </label>
+                        <input 
+                            v-model="title" 
+                            type="text" 
+                            class="w-full px-4 py-3 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 group-hover:border-gray-300" 
+                            placeholder="Ingresa el nombre del atleta" 
+                            required 
+                        />
                     </div>
-                </div>
 
-                <!-- end -->
+                    <!-- Description Field -->
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <span>Descripción</span>
+                            </span>
+                        </label>
+                        <textarea 
+                            v-model="description"
+                            rows="4" 
+                            class="w-full px-4 py-3 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 resize-none group-hover:border-gray-300"
+                            placeholder="Describe los logros y características del atleta..."
+                        ></textarea>
+                    </div>
 
+                    <!-- Extra Info Field -->
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span>Información Adicional</span>
+                            </span>
+                        </label>
+                        <textarea 
+                            v-model="extrainfo"
+                            rows="3" 
+                            class="w-full px-4 py-3 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 resize-none group-hover:border-gray-300"
+                            placeholder="Información adicional relevante..."
+                        ></textarea>
+                    </div>
 
+                    <!-- Images Upload Section -->
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-gray-700 mb-4">
+                            <span class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <span>Imágenes del Atleta</span>
+                            </span>
+                        </label>
+                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 border-2 border-dashed border-gray-300 hover:border-indigo-400 transition-colors duration-300">
+                            <el-upload 
+                                v-model:file-list="atletheImages" 
+                                list-type="picture-card" 
+                                multiple
+                                :on-preview="handlePictureCardPreview" 
+                                :on-remove="handleRemove" 
+                                :on-change="handleFileChange"
+                                class="modern-upload"
+                            >
+                                <div class="flex flex-col items-center justify-center py-4">
+                                    <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                                    </svg>
+                                    <span class="text-sm text-gray-500">Agregar imagen</span>
+                                </div>
+                            </el-upload>
+                        </div>
+                    </div>
 
+                    <!-- Current Images Display -->
+                    <div v-if="atlethe_images && atlethe_images.length > 0" class="group">
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">Imágenes Actuales</label>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                            <div v-for="(aimage, index) in atlethe_images" :key="aimage.id" class="relative group/image">
+                                <div class="relative overflow-hidden rounded-xl bg-white p-2 shadow-md hover:shadow-lg transition-shadow duration-300">
+                                    <img class="w-full h-20 object-cover rounded-lg" :src="`/${aimage.image}`" alt="">
+                                    <button 
+                                        @click="deleteImage(aimage, index)"
+                                        class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-colors duration-200 opacity-0 group-hover/image:opacity-100"
+                                    >
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-            </form>
-
-            <!-- end -->
-
-
-
+                    <!-- Submit Button -->
+                    <div class="flex justify-end pt-4">
+                        <button 
+                            type="submit"
+                            class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:ring-blue-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        >
+                            {{ editMode ? 'Actualizar Atleta' : 'Crear Atleta' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </el-dialog>
 
-        <!-- end -->
-        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-            <!-- Start coding here -->
-            <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-                <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                    <div class="w-full md:w-1/2">
-                        <form class="flex items-center">
-                            <label for="simple-search" class="sr-only">Search</label>
-                            <div class="relative w-full">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                         fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                              clip-rule="evenodd" />
+        <!-- Main Content Container -->
+        <div class="mx-auto max-w-7xl px-4 lg:px-8">
+            <!-- Header Section -->
+            <div class="mb-8">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                            Gestión de Atletas
+                        </h1>
+                        <p class="text-gray-600">Administra los perfiles de atletas y su información</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modern Card Container -->
+            <div class="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-white/50 overflow-hidden">
+                <!-- Top Actions Bar -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
+                    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4">
+                        <!-- Search Section -->
+                        <div class="w-full md:w-1/2">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                                     </svg>
                                 </div>
-                                <input type="text" id="simple-search"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                       placeholder="Search" required="">
+                                <input 
+                                    type="text" 
+                                    class="w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" 
+                                    placeholder="Buscar atletas..." 
+                                />
                             </div>
-                        </form>
-                    </div>
-                    <div
-                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <button type="button" @click="openAddModal"
-                                class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path clip-rule="evenodd" fill-rule="evenodd"
-                                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                            </svg>
-                            Add atlethe
-                        </button>
+                        </div>
 
+                        <!-- Add Button -->
+                        <div class="w-full md:w-auto">
+                            <button 
+                                type="button" 
+                                @click="openAddModal"
+                                class="w-full md:w-auto flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:ring-blue-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                            >
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                                </svg>
+                                Nuevo Atleta
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-4 py-3">Atlethe name</th>
-                          <!--  <th scope="col" class="px-4 py-3">Category</th>
-                            <th scope="col" class="px-4 py-3">Brand</th>
-                            <th scope="col" class="px-4 py-3">Quantity</th>
-                            <th scope="col" class="px-4 py-3">Price</th>
-                            <th scope="col" class="px-4 py-3">Stock</th>-->
-                            <th scope="col" class="px-4 py-3">Publish</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="(atlethe, index) in atlethes" :key="atlethe.id"
-                            class="border-b dark:border-gray-700">
-                            <th scope="row"
-                                class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ atlethe.title }}</th>
-                          <!--  <td class="px-4 py-3">{{ product.category.name }}</td>
-                            <td class="px-4 py-3">{{ product.brand.name }}</td>
-                            <td class="px-4 py-3">{{ product.quantity }}</td>
-                            <td class="px-4 py-3">${{ product.price }}</td>-->
 
-                        <!--    <td class="px-4 py-3">
-                                    <span v-if="product.inStock == 0"
-                                          class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">inStock</span>
-                                <span v-else
-                                      class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Out
-                                        of Stock</span>
-
-                            </td>-->
-                            <td class="px-4 py-3">
-                                <button v-if="atlethe.published == 0" type="button"
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Published</button>
-                                <button v-else type="button"
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">UnPublished</button>
-
-                            </td>
-
-                            <td class="px-4 py-3 flex items-center justify-end">
-
-                                <button :id="`${atlethe.id}-button`" :data-dropdown-toggle="`${atlethe.id}`"
-                                        class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                                        type="button">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                    </svg>
-                                </button>
-                                <div :id="`${atlethe.id}`"
-                                     class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                        :aria-labelledby="`${atlethe.id}-button`">
-
-                                        <li>
-                                            <a href="#" @click="openEditModal(atlethe)"
-                                               class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                        </li>
-                                    </ul>
-                                    <div class="py-1">
-                                        <a href="#" @click="deleteAtlethe(atlethe, index)"
-                                           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
+                <!-- Modern Table -->
+                <div class="overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gradient-to-r from-gray-50 to-blue-50/50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                                        Atleta
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                                        Estado
+                                    </th>
+                                    <th class="px-6 py-4 text-center text-sm font-bold text-gray-700 uppercase tracking-wider">
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr 
+                                    v-for="(atlethe, index) in atlethes" 
+                                    :key="atlethe.id"
+                                    class="hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 transition-all duration-300 group"
+                                >
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                                                    {{ atlethe.title }}
+                                                </h3>
+                                                <p class="text-sm text-gray-500">Atleta profesional</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span 
+                                            v-if="atlethe.published == 0" 
+                                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                                        >
+                                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                                            Publicado
+                                        </span>
+                                        <span 
+                                            v-else 
+                                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200"
+                                        >
+                                            <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                                            No Publicado
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <button 
+                                                @click="openEditModal(atlethe)"
+                                                class="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors duration-200 hover:scale-110 transform"
+                                                title="Editar"
+                                            >
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                                </svg>
+                                            </button>
+                                            <button 
+                                                @click="deleteAtlethe(atlethe, index)"
+                                                class="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors duration-200 hover:scale-110 transform"
+                                                title="Eliminar"
+                                            >
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-                     aria-label="Table navigation">
-                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                        Showing
-                        <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
-                        of
-                        <span class="font-semibold text-gray-900 dark:text-white">1000</span>
-                    </span>
-                    <ul class="inline-flex items-stretch -space-x-px">
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Previous</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                          clip-rule="evenodd" />
+
+                <!-- Modern Pagination -->
+                <div class="bg-gradient-to-r from-gray-50 to-blue-50/50 px-6 py-4 border-t border-gray-100">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+                        <div class="text-sm text-gray-600">
+                            Mostrando <span class="font-semibold text-gray-900">1-10</span> de <span class="font-semibold text-gray-900">1000</span> resultados
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <button class="p-2 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors duration-200 hover:border-gray-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                                 </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                        </li>
-                        <li>
-                            <a href="#" aria-current="page"
-                               class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Next</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                          clip-rule="evenodd" />
+                            </button>
+                            <button class="px-3 py-2 bg-blue-500 text-white rounded-lg font-medium">1</button>
+                            <button class="px-3 py-2 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors duration-200">2</button>
+                            <button class="px-3 py-2 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors duration-200">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button class="px-3 py-2 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors duration-200">100</button>
+                            <button class="p-2 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors duration-200 hover:border-gray-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                                 </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
+<style scoped>
+.modern-dialog :deep(.el-dialog) {
+    @apply rounded-3xl border-0 shadow-2xl;
+}
+
+.modern-dialog :deep(.el-dialog__header) {
+    @apply bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-3xl border-b border-gray-100 p-6;
+}
+
+.modern-dialog :deep(.el-dialog__body) {
+    @apply p-0;
+}
+
+.modern-upload :deep(.el-upload--picture-card) {
+    @apply bg-white/60 border-2 border-dashed border-gray-300 rounded-xl hover:border-blue-400 transition-colors duration-300;
+}
+
+.modern-upload :deep(.el-upload-list--picture-card) {
+    @apply grid grid-cols-3 gap-4;
+}
+
+.modern-upload :deep(.el-upload-list__item) {
+    @apply rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+</style>
