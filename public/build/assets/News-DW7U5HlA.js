@@ -1,1 +1,0 @@
-import e from"./UserLayouts-EA1dhE47.js";import{c as o,o as r,w as a,e as s}from"./app-Cg5WBZFx.js";import"./index-yIGpcDrH.js";import"./Header-BqeWrsuK.js";const c={__name:"News",setup(_){return(m,t)=>(r(),o(e,null,{default:a(()=>t[0]||(t[0]=[s("div",null," NEWSSS ",-1)])),_:1,__:[0]}))}};export{c as default};
