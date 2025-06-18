@@ -1,0 +1,1 @@
+import e from"./UserLayouts-DJ1VhEfG.js";import{c as o,o as r,w as a,e as s}from"./app-DoReGEuS.js";import"./index-D_KQOBrn.js";import"./Header-CfKD3Q1G.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const u={__name:"News",setup(_){return(m,t)=>(r(),o(e,null,{default:a(()=>t[0]||(t[0]=[s("div",null," NEWSSS ",-1)])),_:1,__:[0]}))}};export{u as default};

@@ -1,0 +1,1 @@
+.content-wrapper{opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(.2,.8,.2,1)}.content-wrapper.appear{opacity:1;transform:translateY(0)}

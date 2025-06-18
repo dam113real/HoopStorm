@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, ref } from "vue";
 import UserLayouts from "./Layouts/UserLayouts.vue";
-import { router, usePage } from "@inertiajs/vue3";
+import { router, usePage, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
     userAddress: Object,
@@ -22,9 +22,25 @@ const form = reactive({
 });
 
 const loading = ref(false);
+const showTestCards = ref(false);
+
 const formFilled = computed(() =>
     Object.values(form).every((field) => field.trim() !== "")
 );
+
+// Tarjetas de prueba de Stripe
+const testCards = [
+    { number: "4242424242424242", description: "Visa - Pago exitoso" },
+    { number: "5555555555554444", description: "Mastercard - Pago exitoso" },
+    { number: "378282246310005", description: "American Express - Pago exitoso" }
+];
+
+const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+        // Aquí podrías mostrar un toast de confirmación
+        console.log('Número copiado al portapapeles');
+    });
+};
 
 const update = (product, quantity) =>
     router.patch(route("cart.update", product), { quantity });
@@ -75,7 +91,7 @@ function submit() {
                             ¡Explora productos y añade algo que te guste!
                         </p>
                         <Link
-                            :href="route('products.index')"
+                            :href="route('products.index')" 
                             class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded-xl shadow-md transition-all"
                         >
                             Ir a la tienda
@@ -175,6 +191,46 @@ function submit() {
                         <span class="text-indigo-600 dark:text-indigo-400"
                             >{{ total }} € </span
                         >
+                    </div>
+
+                    <!-- Información de tarjetas de prueba -->
+                    <div class="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-sm font-semibold text-amber-800 dark:text-amber-200 flex items-center">
+                                ⚠️ Modo de Prueba
+                            </h3>
+                            <button 
+                                @click="showTestCards = !showTestCards"
+                                class="text-xs text-amber-600 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-200 transition-colors"
+                            >
+                                {{ showTestCards ? 'Ocultar' : 'Ver tarjetas de prueba' }}
+                            </button>
+                        </div>
+                        <p class="text-xs text-amber-700 dark:text-amber-300 mb-2">
+                            Esta tienda está en modo de prueba. Usa las tarjetas de prueba de Stripe para simular pagos.
+                        </p>
+                        
+                        <div v-if="showTestCards" class="space-y-2 mt-3">
+                            <div 
+                                v-for="card in testCards" 
+                                :key="card.number"
+                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-800 rounded-lg border"
+                            >
+                                <div>
+                                    <p class="text-xs font-mono text-gray-800 dark:text-gray-200">{{ card.number }}</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">{{ card.description }}</p>
+                                </div>
+                                <button 
+                                    @click="copyToClipboard(card.number)"
+                                    class="text-xs px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors"
+                                >
+                                    Copiar
+                                </button>
+                            </div>
+                            <p class="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                                💡 Usa cualquier fecha futura y CVC (ej: 123)
+                            </p>
+                        </div>
                     </div>
 
                     <div

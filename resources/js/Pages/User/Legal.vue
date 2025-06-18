@@ -1,4 +1,5 @@
 <template>
+  <UserLayouts>
   <div class="min-h-screen bg-gray-50 text-gray-800 px-6 py-12 max-w-5xl mx-auto space-y-12">
     <!-- Header -->
     <header class="text-center">
@@ -56,18 +57,22 @@
       </p>
     </section>
 
-    <!-- Footer link -->
-                       <a href="/"
-   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-   aria-current="page">Home</a>
+   
 
 
 
   </div>
+  
+  </UserLayouts>
+<Footer />
 </template>
 
 <script setup>
 // No se requiere lógica JS en esta página estática
+import { ref, onMounted } from "vue";
+import { Link } from "@inertiajs/vue3";
+import Footer from "../User/Layouts/Footer.vue";
+import UserLayouts from "./Layouts/UserLayouts.vue";
 </script>
 
 <style scoped>

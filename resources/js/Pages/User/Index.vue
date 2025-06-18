@@ -678,19 +678,7 @@ export default {
     //   }
     // },
     setup(props) {
-        // Secciones de productos según ID
-        // const section1Products = ref([]);
-        // const section2Products = ref([]);
-        // const section3Products = ref([]);
-        // const section4Products = ref([]);
-
-        // if (props.products.length) {
-        //   section1Products.value = props.products.filter(p => p.id === 1);
-        //   section2Products.value = props.products.filter(p => p.id === 13);
-        //   section3Products.value = props.products.filter(p => p.id === 25);
-        //   section4Products.value = props.products.filter(p => p.id === 37);
-        // }
-
+      
         // Productos destacados
         const products = ref([
             {

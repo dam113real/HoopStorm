@@ -61,31 +61,31 @@ function toggleUserDropdown() {
   
     <!-- Gradient decorative elements -->
     <div class="absolute inset-0 -z-10 opacity-20 overflow-hidden">
-      <div class="absolute -top-10 -left-10 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-      <div class="absolute -top-10 -right-10 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div class="absolute -top-10 -left-10 w-20 h-20 sm:w-40 sm:h-40 lg:w-60 lg:h-60 xl:w-80 xl:h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+      <div class="absolute -top-10 -right-10 w-20 h-20 sm:w-40 sm:h-40 lg:w-60 lg:h-60 xl:w-80 xl:h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-      <div class="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-        <!-- Logo with animation -->
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-18 lg:h-20">
+        <!-- Logo with animation - Optimizado para móvil -->
         <Link 
           :href="route('home')" 
-          class="flex items-center space-x-1 sm:space-x-2 group"
+          class="flex items-center group shrink-0"
           aria-label="Home"
         >
           <div class="relative">
             <div class="absolute -inset-1 sm:-inset-2 bg-indigo-500/10 rounded-full group-hover:opacity-100 opacity-0 transition-opacity duration-300"></div>
           </div>
-          <span class="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-2 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 text-transparent bg-clip-text tracking-tight">
+          <span class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-2 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 text-transparent bg-clip-text tracking-tight whitespace-nowrap">
             Hoop Storm
           </span>
         </Link>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <nav class="hidden lg:flex items-center space-x-4 xl:space-x-6">
           <Link 
             :href="route('home')" 
-            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap"
             active-class="text-indigo-600 dark:text-indigo-400 font-semibold"
           >
             <span class="relative group">
@@ -96,7 +96,7 @@ function toggleUserDropdown() {
 
           <Link 
             :href="route('products.index')" 
-            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap"
             active-class="text-indigo-600 dark:text-indigo-400 font-semibold"
           >
             <span class="relative group">
@@ -107,10 +107,10 @@ function toggleUserDropdown() {
 
           <Link 
             :href="route('news.index')" 
-            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap"
             active-class="text-indigo-600 dark:text-indigo-400 font-semibold"
           >
-            <span class="relative group ">
+            <span class="relative group">
               Noticias
               <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300"></span>
             </span>
@@ -118,7 +118,7 @@ function toggleUserDropdown() {
 
           <Link 
             :href="route('atlethes.index')" 
-            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap"
             active-class="text-indigo-600 dark:text-indigo-400 font-semibold"
           >
             <span class="relative group">
@@ -130,7 +130,7 @@ function toggleUserDropdown() {
           <Link 
             v-if="isAdmin"
             :href="route('admin.dashboard')" 
-            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            class="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap"
             active-class="text-indigo-600 dark:text-indigo-400 font-semibold"
           >
             <span class="relative group">
@@ -140,12 +140,12 @@ function toggleUserDropdown() {
           </Link>
         </nav>
 
-        <!-- Right side controls -->
-        <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Right side controls - Reorganizado para mejor responsive -->
+        <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
           <!-- Dark mode toggle -->
           <button
             @click="toggleDarkMode"
-            class="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            class="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 shrink-0"
             aria-label="Toggle dark mode"
           >
             <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
@@ -159,10 +159,10 @@ function toggleUserDropdown() {
           <!-- Cart with animation -->
           <Link 
             :href="route('cart.view')" 
-            class="relative p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 group"
+            class="relative p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 group shrink-0"
             aria-label="Shopping cart"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
             <span v-if="cart.data.count > 0" class="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 text-xs font-bold text-white bg-red-500 rounded-full transform group-hover:scale-110 transition-transform">
@@ -170,8 +170,8 @@ function toggleUserDropdown() {
             </span>
           </Link>
 
-          <!-- User controls -->
-          <div class="relative" v-if="canLogin">
+          <!-- User controls - Mejorado para móvil -->
+          <div class="relative shrink-0" v-if="canLogin">
             <div v-if="auth.user">
               <button 
                 @click="toggleUserDropdown"
@@ -216,17 +216,18 @@ function toggleUserDropdown() {
               </div>
             </div>
 
-            <div v-else class="flex items-center space-x-1 sm:space-x-2">
+            <!-- Botones de login optimizados para móvil -->
+            <div v-else class="flex items-center space-x-1">
               <Link 
                 :href="route('login')" 
-                class="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-2 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-xs sm:text-sm px-2.5 py-1.5 sm:px-4 sm:py-2 text-center"
+                class="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-2 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-xs px-2 py-1.5 sm:text-sm sm:px-3 sm:py-2 text-center whitespace-nowrap"
               >
                 Sign in
               </Link>
               <Link 
                 v-if="canRegister"
                 :href="route('register')" 
-                class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-xs sm:text-sm px-2.5 py-1.5 sm:px-4 sm:py-2 text-center"
+                class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-xs px-2 py-1.5 sm:text-sm sm:px-3 sm:py-2 text-center whitespace-nowrap"
               >
                 Sign up
               </Link>
@@ -236,7 +237,7 @@ function toggleUserDropdown() {
           <!-- Mobile menu button -->
           <button 
             @click="toggleMenu"
-            class="lg:hidden p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            class="lg:hidden p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 ml-1 shrink-0"
             aria-label="Toggle menu"
           >
             <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -326,10 +327,19 @@ function toggleUserDropdown() {
   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Responsive para elementos decorativos */
+/* Responsive optimizado para elementos decorativos */
 @media (max-width: 640px) {
   .animate-blob {
     animation-duration: 10s;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .animate-blob {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
 }
 
@@ -348,89 +358,52 @@ function toggleUserDropdown() {
   background: #6b7280;
 }
 
-/* Mejoras responsive para navegación */
-@media (max-width: 1024px) {
-  .nav-link {
-    font-size: 0.8125rem;
-  }
-}
-
-/* Estilos nav-link optimizados */
-.nav-link {
-  position: relative;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
-  transition: color 0.3s;
-}
-.dark .nav-link {
-  color: #d1d5db;
-}
-.nav-link:hover {
-  color: #4f46e5;
-}
-.dark .nav-link:hover {
-  color: #818cf8;
-}
-.nav-link.active {
-  color: #4f46e5;
-  font-weight: 600;
-}
-.dark .nav-link.active {
-  color: #818cf8;
-}
-
-/* Estilos para enlaces en dropdown responsive */
-.dropdown-link {
-  display: block;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  color: #374151;
-  transition: background-color 0.2s;
-}
-.dark .dropdown-link {
-  color: #d1d5db;
-}
-.dropdown-link:hover {
-  background-color: #f3f4f6;
-}
-.dark .dropdown-link:hover {
-  background-color: #374151;
-}
-
-/* Enlaces de navegación móvil mejorados */
-.mobile-nav-link {
-  display: block;
-  padding: 0.625rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #374151;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-}
-.dark .mobile-nav-link {
-  color: #d1d5db;
-}
-.mobile-nav-link:hover {
-  color: #4f46e5;
-  background-color: #f9fafb;
-}
-.dark .mobile-nav-link:hover {
-  color: #818cf8;
-  background-color: #374151;
-}
-
-/* Optimizaciones adicionales para móvil */
+/* Mejoras responsive específicas */
 @media (max-width: 640px) {
-  .mobile-nav-link {
-    font-size: 0.9375rem;
-    padding: 0.5rem 0.75rem;
+  /* Asegurar que el logo no se rompa */
+  .bg-clip-text {
+    font-size: 1rem !important;
+    line-height: 1.2;
   }
   
-  /* Reducir tamaño de elementos decorativos en móvil */
-  .animate-blob {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
+  /* Botones más compactos en móvil */
+  .mobile-auth-button {
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.75rem !important;
+    min-width: auto !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .bg-clip-text {
+    font-size: 1.125rem !important;
+  }
+}
+
+/* Prevenir wrap en elementos críticos */
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+/* Optimización adicional para pantallas muy pequeñas */
+@media (max-width: 375px) {
+  .bg-clip-text {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Reducir padding en contenedor principal */
+  .max-w-7xl {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* Espaciado más compacto */
+  .space-x-1 > * + * {
+    margin-left: 0.125rem !important;
   }
 }
 
@@ -448,13 +421,17 @@ function toggleUserDropdown() {
   }
 }
 
-/* Grid responsive mejorado para controles */
-@media (min-width: 640px) {
-  .controls-grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 0.75rem;
-    align-items: center;
+/* Asegurar visibilidad del dropdown en móvil */
+@media (max-width: 640px) {
+  .absolute.right-0.mt-2 {
+    right: -0.5rem !important;
+  }
+}
+
+/* Optimización adicional para altura en móvil */
+@media (max-width: 640px) and (max-height: 650px) {
+  .h-16 {
+    height: 3.5rem !important;
   }
 }
 </style>
